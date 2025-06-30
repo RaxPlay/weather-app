@@ -61,3 +61,20 @@ body{
     font-size: 1.4rem;
     font-weight: 600;
 }
+
+/*------------*\
+  #ANIMATIONS
+\*------------*/
+
+@keyframes come-right{
+    0%{
+        transform: translateX(-97vh);
+    }
+    100%{
+        transform: translateX(0vh);
+    }
+}
+
+/*-------------*\
+  #RESPONSIVENES
+\*-------------*/
