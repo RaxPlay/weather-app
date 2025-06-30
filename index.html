@@ -13,12 +13,19 @@
         <button class="search-weather" onclick="getData()">
             <i class="fa-solid fa-magnifying-glass"></i>
         </button>
+        <button class="restart-search" onclick="restartSearch()">
+            <i class="fa-solid fa-rotate-right"></i>
+        </button>
     </div>
     
     <div class="weather-container">
         <h2 class="city-name"></h2>
         <p class="city-temperature"></p>    
         <p class="city-skies"></p>    
+        <div class="max-min-temp-container">
+            <p class="max-temp"></p>
+            <p class="min-temp"></p>
+        </div>
     </div>
 
     <script src="script.js"></script>

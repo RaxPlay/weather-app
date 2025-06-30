@@ -12,7 +12,7 @@ body{
 
 .search-container{
     margin: auto;
-    width: 10%;
+    width: 13%;
     height: 15%;
     margin-top: 50px;
 }
@@ -24,18 +24,20 @@ body{
     border-radius: 25px;
     width: 100px;
 }
-.search-weather{
+.search-weather, .restart-search{
     text-align: center;
     padding: 15px;
     border: none;
     border-radius: 25px;
     width: 50px;
     background-color: rgb(51, 51, 215);
-}
-.fa-solid.fa-magnifying-glass{
     color: white;
+    
+    transition: 0.5s;
 }
-
+.search-weather:hover, .restart-search:hover{
+    background-color: rgb(49, 49, 182);
+}
 /*----------------*\
   #WEATHER SECTION 
 \*----------------*/
@@ -57,9 +59,21 @@ body{
 .weather-container h2{
     font-size: 2rem;
 }
-.weather-container p{
-    font-size: 1.4rem;
+.weather-container .city-temperature{
+    font-size: 2rem;
     font-weight: 600;
+}
+.max-min-temp-container{
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    justify-content: space-between;
+    width: 200px;
+    height: 50px;
+    font-size: 1.5rem;
+    position: relative;
+    bottom: 35px;
 }
 
 /*------------*\

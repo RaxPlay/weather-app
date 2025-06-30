@@ -3,9 +3,20 @@ const weatherDisplay = document.querySelector(".weather-container");
 const cityNameDisplay = document.querySelector(".city-name");
 const cityTemperatureDisplay = document.querySelector(".city-temperature");
 const citySkiesDisplay = document.querySelector(".city-skies");
- 
+const maxTemperatureDisplay = document.querySelector(".max-temp");
+const minTemperatureDisplay = document.querySelector(".min-temp");
+
 //Getting information from API and putting it into display.
 async function getData() {
+    //If weather display is full the page will restart
+    if(weatherDisplay.classList.contains("has-elements")){
+        alert("Content overflow... Page will restart")
+        restartSearch();
+    }
+    else{
+        weatherDisplay.classList.add("has-elements")
+    }
+
     const cityInput = document.querySelector(".city-input").value.toLowerCase();
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${apiKey}&units=metric`;
 
@@ -14,6 +25,8 @@ async function getData() {
     const cityName = data.name;
     const country = data.sys.country;
     const cityTemperature = data.main.temp;
+    const maxTemp = data.main.temp_max;
+    const minTemp = data.main.temp_min;
 
     checkTemp(cityTemperature)
 
@@ -21,7 +34,9 @@ async function getData() {
     weatherDisplay.style.display = 'block'; 
 
     cityNameDisplay.append(`${cityName}, ${country}`);
-    cityTemperatureDisplay.append(cityTemperature + "°");
+    cityTemperatureDisplay.append(`${cityTemperature}°`);
+    maxTemperatureDisplay.append(`H: ${maxTemp}°`)
+    minTemperatureDisplay.append(`L: ${minTemp}°`)
     console.log(data);
 
     if(!response.ok){
@@ -31,22 +46,20 @@ async function getData() {
 
 //Function to change weatherDisplay's background and border color according to the temperature of cities.
 function checkTemp(cityTemperature){
-    if(cityTemperature >= 26 && cityTemperature <= 31){
+    if(cityTemperature > 26 && cityTemperature <= 31){
         weatherDisplay.style.background = "linear-gradient(to bottom right,rgb(76, 43, 193), #A05DD9) no-repeat"
         weatherDisplay.style.border = "3px solid rgb(174, 36, 220)"
-        let status = "Neutral temperature: ";
-        cityTemperatureDisplay.append(status);
     }
-    if(cityTemperature >= 10 && cityTemperature <= 25){
+    if(cityTemperature > 0 && cityTemperature <= 26){
         weatherDisplay.style.background = "linear-gradient(to bottom right,rgb(37, 119, 243), #5DB6D9) no-repeat"
         weatherDisplay.style.border = "3px solid rgb(33, 147, 218)"
-        let status = "Cold/Cool temperature: ";
-        cityTemperatureDisplay.append(status);
     }
     if(cityTemperature > 31){
         weatherDisplay.style.background = "linear-gradient(to bottom right,rgb(178, 28, 28),rgb(193, 197, 62)) no-repeat"
         weatherDisplay.style.border = "3px solid rgb(202, 29, 29)"
-        let status = "Hot temperature: ";
-        cityTemperatureDisplay.append(status);
     }
+}
+
+function restartSearch(){
+    window.location.reload(true);
 }
