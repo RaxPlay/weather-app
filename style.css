@@ -35,3 +35,29 @@ body{
 .fa-solid.fa-magnifying-glass{
     color: white;
 }
+
+/*----------------*\
+  #WEATHER SECTION 
+\*----------------*/
+
+.weather-container{
+    border: 3px solid rgb(67, 139, 255);
+    color: white;
+    padding: 10px;
+    background-color: white;
+    border-radius: 25px;
+    width: 20%;
+    height: 40%;
+    margin: auto;
+    text-align: center;
+    display: none;
+
+    animation: come-right 0.5s;
+}
+.weather-container h2{
+    font-size: 2rem;
+}
+.weather-container p{
+    font-size: 1.4rem;
+    font-weight: 600;
+}
