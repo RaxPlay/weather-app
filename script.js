@@ -2,7 +2,6 @@
 const apiKey = "4fe27b18fca578bcbc853c3872323f64";
 const weatherDisplay = document.querySelector(".weather-container");
 const placeholder = document.querySelector(".placeholder-h1");
-//Creating elements
 const cityNameDisplay = document.querySelector(".city-name")
 const cityTemperatureDisplay = document.querySelector(".city-temp");
 const maxTemperatureDisplay = document.querySelector(".max-temp");
@@ -11,13 +10,6 @@ const minTemperatureDisplay = document.querySelector(".min-temp")
 //Getting information from API and putting it into display.
 async function getData() {
     placeholder.remove()
-
-    if(weatherDisplay.classList.contains("has-elements")){
-        weatherDisplay.classList.remove("has-elements")
-    }
-    else if(!weatherDisplay.classList.contains("elements")){
-        weatherDisplay.classList.add("has-elements")
-    }
 
     const cityInput = document.querySelector(".city-input").value.toLowerCase();
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${apiKey}&units=metric`;
