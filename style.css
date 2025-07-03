@@ -46,27 +46,25 @@ body{
     border: 3px solid rgb(67, 139, 255);
     color: white;
     padding: 10px;
-    background-color: white;
+    background: linear-gradient(to bottom left, #20a1e6, #2a59e6 );
     border-radius: 25px;
     width: 20%;
     height: 40%;
     margin: auto;
     text-align: center;
-    display: none;
 
     animation: come-right 0.5s;
 }
 .weather-container h2{
     font-size: 2rem;
 }
-.weather-container .city-temperature{
+.weather-container .city-temp{
     font-size: 2rem;
     font-weight: 600;
 }
 .max-min-temp-container{
     padding: 0;
     display: flex;
-    align-items: center;
     justify-self: center;
     justify-content: space-between;
     width: 200px;
@@ -80,15 +78,7 @@ body{
   #ANIMATIONS
 \*------------*/
 
-@keyframes come-right{
-    0%{
-        transform: translateX(-97vh);
-    }
-    100%{
-        transform: translateX(0vh);
-    }
-}
-
 /*-------------*\
   #RESPONSIVENES
 \*-------------*/
+

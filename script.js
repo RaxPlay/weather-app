@@ -1,19 +1,21 @@
+//Variables
 const apiKey = "4fe27b18fca578bcbc853c3872323f64";
 const weatherDisplay = document.querySelector(".weather-container");
-const cityNameDisplay = document.querySelector(".city-name");
-const cityTemperatureDisplay = document.querySelector(".city-temperature");
-const citySkiesDisplay = document.querySelector(".city-skies");
+const placeholder = document.querySelector(".placeholder-h1");
+//Creating elements
+const cityNameDisplay = document.querySelector(".city-name")
+const cityTemperatureDisplay = document.querySelector(".city-temp");
 const maxTemperatureDisplay = document.querySelector(".max-temp");
-const minTemperatureDisplay = document.querySelector(".min-temp");
+const minTemperatureDisplay = document.querySelector(".min-temp")
 
 //Getting information from API and putting it into display.
 async function getData() {
-    //If weather display is full the page will restart
+    placeholder.remove()
+
     if(weatherDisplay.classList.contains("has-elements")){
-        alert("Content overflow... Page will restart")
-        restartSearch();
+        weatherDisplay.classList.remove("has-elements")
     }
-    else{
+    else if(!weatherDisplay.classList.contains("elements")){
         weatherDisplay.classList.add("has-elements")
     }
 
@@ -30,13 +32,11 @@ async function getData() {
 
     checkTemp(cityTemperature)
 
-    weatherDisplay.style.transition = '0.5s';   
-    weatherDisplay.style.display = 'block'; 
+    cityNameDisplay.innerHTML = `${cityName}, ${country}`;
+    cityTemperatureDisplay.innerHTML = cityTemperature;
+    maxTemperatureDisplay.innerHTML = `H: ${maxTemp}°`
+    minTemperatureDisplay.innerHTML = `L: ${minTemp}°`
 
-    cityNameDisplay.append(`${cityName}, ${country}`);
-    cityTemperatureDisplay.append(`${cityTemperature}°`);
-    maxTemperatureDisplay.append(`H: ${maxTemp}°`)
-    minTemperatureDisplay.append(`L: ${minTemp}°`)
     console.log(data);
 
     if(!response.ok){
