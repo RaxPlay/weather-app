@@ -5,11 +5,21 @@ const placeholder = document.querySelector(".placeholder-h1");
 const cityNameDisplay = document.querySelector(".city-name")
 const cityTemperatureDisplay = document.querySelector(".city-temp");
 const maxTemperatureDisplay = document.querySelector(".max-temp");
-const minTemperatureDisplay = document.querySelector(".min-temp")
+const minTemperatureDisplay = document.querySelector(".min-temp");
+const skyStatusDisplay = document.querySelector(".skies");
+const windSpeedDisplay = document.querySelector(".wind-speed");
+const humidityLevelDisplay = document.querySelector(".humidity");
+//labels
+const conditionsTxt = document.querySelector(".conditions-text");
+const windSpeedLabel = document.querySelector(".wind-speed-label")
+const humidityLabel = document.querySelector(".humidity-label")
 
 //Getting information from API and putting it into display.
 async function getData() {
     placeholder.remove()
+    conditionsTxt.style.display = 'block'
+    windSpeedLabel.style.display = 'block'
+    humidityLabel.style.display = 'block'
 
     const cityInput = document.querySelector(".city-input").value.toLowerCase();
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${apiKey}&units=metric`;
@@ -18,18 +28,24 @@ async function getData() {
     const data = await response.json();
     const cityName = data.name;
     const country = data.sys.country;
-    const cityTemperature = data.main.temp;
-    const maxTemp = data.main.temp_max;
-    const minTemp = data.main.temp_min;
+    const cityTemperature = Math.round(data.main.temp);
+    const maxTemp = Math.round(data.main.temp_max);
+    const minTemp = Math.round(data.main.temp_min);
+    const humidityLevel = data.main.humidity;
+    const windSpeed = data.wind.speed;
+    const skyStatus = data.weather[0].description;
 
     checkTemp(cityTemperature)
 
-    cityNameDisplay.innerHTML = `${cityName}, ${country}`;
-    cityTemperatureDisplay.innerHTML = cityTemperature;
-    maxTemperatureDisplay.innerHTML = `H: ${maxTemp}°`
-    minTemperatureDisplay.innerHTML = `L: ${minTemp}°`
+    cityNameDisplay.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${cityName}, ${country}`;
+    cityTemperatureDisplay.innerHTML = `${cityTemperature}°C`;
+    maxTemperatureDisplay.innerHTML = `H: ${maxTemp}°C`
+    minTemperatureDisplay.innerHTML = `L: ${minTemp}°C`
+    humidityLevelDisplay.innerHTML = `<i class="fa-solid fa-droplet"></i> ${humidityLevel}%`
+    windSpeedDisplay.innerHTML = `<i class="fa-solid fa-wind"></i> ${windSpeed}km`
+    skyStatusDisplay.innerHTML = `<i class="fa-solid fa-cloud"></i> ${skyStatus}`
 
-    console.log(data);
+    console.log(data); 
 
     if(!response.ok){
         throw new Error("Could not fetch data... Invalid location");

@@ -4,6 +4,7 @@ body{
     background: linear-gradient(to bottom right, rgb(15, 15, 104), rgb(31, 207, 207)) no-repeat;
     height: 100vh;
     font-family: "Roboto", sans-serif;
+    font-size: 1.4rem;
 }
 
 /*---------------*\
@@ -12,7 +13,7 @@ body{
 
 .search-container{
     margin: auto;
-    width: 13%;
+    width: 14%;
     height: 15%;
     margin-top: 50px;
 }
@@ -55,29 +56,53 @@ body{
 
     animation: come-right 0.5s;
 }
-.weather-container h2{
-    font-size: 2rem;
+.city-name-temp-container{
+    display: flex;
+    justify-self: center;
+    justify-content: space-between;
+    width: 75%;
+    font-size: 1.8rem;
 }
-.weather-container .city-temp{
-    font-size: 2rem;
-    font-weight: 600;
+.fa-solid.fa-location-dot{
+    font-size: 1.5rem;
+    position: relative;
+    bottom: 2.5px;
 }
 .max-min-temp-container{
     padding: 0;
     display: flex;
     justify-self: center;
     justify-content: space-between;
-    width: 200px;
+    width: 170px;
     height: 50px;
     font-size: 1.5rem;
     position: relative;
-    bottom: 35px;
+
+    bottom: 60px;
 }
-
-/*------------*\
-  #ANIMATIONS
-\*------------*/
-
+.sky-info-container{
+    padding: 0;
+    position: relative;
+    height: 20px;
+    bottom: 50px;
+}
+.conditions-text, .wind-speed-label, .humidity-label{
+    display: none;
+}
+.wind-speed-label, .humidity-label{
+    position: absolute;
+    font-size: 1.2rem;
+    filter: opacity(0.5);    
+}
+.humidity-label{
+    left: 52%;
+}
+.conditions-container{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 200px;
+}
 /*-------------*\
   #RESPONSIVENES
 \*-------------*/

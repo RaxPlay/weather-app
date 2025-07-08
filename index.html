@@ -20,13 +20,30 @@
     
     <div class="weather-container">
         <h1 class="placeholder-h1">Search up a city!</h1>
-
-        <h2 class="city-name"></h2>
-        <p class="city-temp"></p>
-        <div class="max-min-temp-container">
-            <p class="max-temp"></p>
-            <p class="min-temp"></p>
+        <!--main info-->
+        <div>
+            <div class="city-name-temp-container">    
+                <p class="city-name"></p>
+                <p class="city-temp"></p>
+            </div>
+            <div class="sky-info-container">
+                <p class="skies"></p>
+            </div>
+            <div class="max-min-temp-container">
+                <p class="max-temp"></p>
+                <p class="min-temp"></p>
+            </div>
         </div>
+        <!--Conditions-->
+        <div class="main-conditions-container">
+            <h2 class="conditions-text">Conditions</h2>
+            <div class="conditions-container">
+                <label for="wind-speed" class="wind-speed-label">Wind speed</label>
+                <p class="wind-speed"></p>
+                <label for="humidity" class="humidity-label">Humidity</label>
+                <p class="humidity"></p>
+            </div>
+        </div>        
     </div>
 
     <script src="script.js"></script>
